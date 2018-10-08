@@ -16,3 +16,7 @@ it("should return the sum of two numbers", () => {
 it("should return the sum of multiple numbers", () => {
 	expect(add("1,2,3,4")).toBe(10);
 });
+
+it("new line character as delimeter, should return the sum of multiple numbers", () => {
+	expect(add("1\n2,3,4")).toBe(10);
+});
