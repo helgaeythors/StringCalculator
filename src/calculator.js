@@ -3,6 +3,10 @@ function add (numbers){
 	if(numbers == "") // empty string
 		return 0;
 
+	if(numbers.includes("-")){ // throw exception if any negative numbers
+		throw "Negatives not allowed";
+	}
+
 	if(numbers.includes("," || "\n")){ // multiple numbers and two delimeters
 		var numberArr = numbers.split(/[,\n]/);
 		var total = 0;

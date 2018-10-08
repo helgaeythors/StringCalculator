@@ -17,6 +17,13 @@ it("should return the sum of multiple numbers", () => {
 	expect(add("1,2,3,4")).toBe(10);
 });
 
-it("new line character as delimeter, should return the sum of multiple numbers", () => {
+it("should return the sum of multiple numbers, new line character as delimeter", () => {
 	expect(add("1\n2,3,4")).toBe(10);
+});
+
+test("exception thrown if any negative numbers are in the string", () => {
+	function negativeNumbers(){
+		add("2,-4,3,-5");
+	}
+	expect(negativeNumbers).toThrow("Negatives not allowed");
 });
