@@ -21,9 +21,9 @@ it("should return the sum of multiple numbers, new line character as delimeter",
 	expect(add("1\n2,3,4")).toBe(10);
 });
 
-test("exception thrown if any negative numbers are in the string", () => {
+test("exception thrown if any negative numbers are in the string, and show negative numbers", () => {
 	function negativeNumbers(){
-		add("2,-4,3,-5");
+		add("-2\n-4,3,-5");
 	}
-	expect(negativeNumbers).toThrow("Negatives not allowed");
+	expect(negativeNumbers).toThrow("Negatives not allowed: -2,-4,-5");
 });
