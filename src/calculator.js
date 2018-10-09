@@ -13,6 +13,8 @@ function add (numbers){
 		return sum(numberArr);
 	}
 
+	if(parseInt(numbers) > 1000) return 0; // a single number larger than 1000
+
 	return parseInt(numbers); // only one number		
 }
 
@@ -20,7 +22,9 @@ function sum(arr){
 	var total = 0;
 
 	for(var i = 0; i < arr.length; i++){
-		total += parseInt(arr[i]);
+		if(!(arr[i] > 1000)){
+			total += parseInt(arr[i]);
+		}
 	}
 	return total;	
 }
@@ -30,7 +34,6 @@ function errorMessage(arr, length){
 
 	for(var i = 0; i < length; i++){
 		errorMessage += arr[i];
-
 		if(i != length - 1) errorMessage += ",";
 	}
 	return errorMessage;

@@ -27,3 +27,11 @@ test("exception thrown if any negative numbers are in the string, and show negat
 	}
 	expect(negativeNumbers).toThrow("Negatives not allowed: -2,-4,-5");
 });
+
+it("should ignore a single number larger than 1000", () => {
+	expect(add("1001")).toBe(0);
+});
+
+it("should ignore numbers larger than 1000", () => {
+	expect(add("1001,2\n1")).toBe(3);
+});
