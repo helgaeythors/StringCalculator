@@ -5,21 +5,11 @@ function add (numbers){
 
 	if(numbers.includes("-")){ // throw exception if there is a negative number
 		var negNumbers = numbers.match(/-\d+/g).map(Number);
-
-		var errorMessage = "Negatives not allowed: ";
-
-		for(var i = 0; i < numbers.length; i++){
-			errorMessage += negNumbers[i];
-
-			if(i != numbers.length - 1) errorMessage += ",";
-		}
-
-		throw errorMessage;
+		throw errorMessage(negNumbers, numbers.length);
 	}
 
 	if(numbers.includes("," || "\n")){ // multiple numbers and two delimeters
 		var numberArr = numbers.split(/[,\n]/);
-
 		return sum(numberArr);
 	}
 
@@ -28,10 +18,22 @@ function add (numbers){
 
 function sum(arr){
 	var total = 0;
+
 	for(var i = 0; i < arr.length; i++){
 		total += parseInt(arr[i]);
 	}
 	return total;	
+}
+
+function errorMessage(arr, length){
+	var errorMessage = "Negatives not allowed: ";
+
+	for(var i = 0; i < length; i++){
+		errorMessage += arr[i];
+
+		if(i != length - 1) errorMessage += ",";
+	}
+	return errorMessage;
 }
 
 module.exports = add;
