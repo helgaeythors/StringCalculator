@@ -35,3 +35,7 @@ it("should ignore a single number larger than 1000", () => {
 it("should ignore numbers larger than 1000", () => {
 	expect(add("1001,2\n1")).toBe(3);
 });
+
+it("should handle different delimeters", () => {
+	expect(add("//;\n1;2;3")).toBe(6);
+});

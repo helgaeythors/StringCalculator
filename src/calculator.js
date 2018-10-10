@@ -8,6 +8,13 @@ function add (numbers){
 		throw errorMessage(negNumbers, numbers.length);
 	}
 
+	if(numbers.includes("//")){ // different delimeter
+		var newDelimeter = numbers.match(/\/\/(.*)(?=\s)/)[1];
+		var numbersString = numbers.match(/(?<=\s)(.*)/)[1];
+		var numberArr = numbersString.split(newDelimeter);
+		return sum(numberArr);
+	}
+
 	if(numbers.includes("," || "\n")){ // multiple numbers and two delimeters
 		var numberArr = numbers.split(/[,\n]/);
 		return sum(numberArr);
