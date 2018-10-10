@@ -25,7 +25,7 @@ function add (numbers){
 	return parseInt(numbers); // only one number		
 }
 
-function sum(arr){
+function sum(arr){ // takes in an array of numbers and returns the sum
 	var total = 0;
 
 	for(var i = 0; i < arr.length; i++){
@@ -36,8 +36,8 @@ function sum(arr){
 	return total;	
 }
 
-function errorMessage(arr, length){
-	var errorMessage = "Negatives not allowed: ";
+function errorMessage(arr, length){ // takes in array of negative numbers, length
+	var errorMessage = "Negatives not allowed: "; //and returns error message as string
 
 	for(var i = 0; i < length; i++){
 		errorMessage += arr[i];

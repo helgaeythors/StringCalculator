@@ -25,6 +25,7 @@ test("exception thrown if any negative numbers are in the string, and show negat
 	function negativeNumbers(){
 		add("-2\n-4,3,-5");
 	}
+
 	expect(negativeNumbers).toThrow("Negatives not allowed: -2,-4,-5");
 });
 
