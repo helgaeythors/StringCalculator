@@ -37,6 +37,10 @@ it("should ignore numbers larger than 1000", () => {
 	expect(add("1001,2\n1")).toBe(3);
 });
 
-it("should handle different delimeters", () => {
+it("should handle optional delimeter", () => {
 	expect(add("//;\n1;2;3")).toBe(6);
+});
+
+it("should handle optinal delimeter and default delimeters", () => {
+	expect(add("//;%\n1\n2;%3,4")).toBe(10);
 });

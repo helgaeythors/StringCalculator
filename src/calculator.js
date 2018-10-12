@@ -8,15 +8,24 @@ function add (numbers){
 		throw errorMessage(negNumbers, numbers.length);
 	}
 
-	if(numbers.includes("//")){ // different delimeter
-		var newDelimeter = numbers.match(/\/\/(.*)(?=\s)/)[1];
-		var numbersString = numbers.match(/(?<=\s)(.*)/)[1];
-		var numberArr = numbersString.split(newDelimeter);
-		return sum(numberArr);
-	}
+	if(numbers.includes(",") || numbers.includes("\n")){ // multiple numbers and different delimeters	
+		var numberArr = numbers.split(/[,\n]/); // split on the default delimeters
 
-	if(numbers.includes("," || "\n")){ // multiple numbers and two delimeters
-		var numberArr = numbers.split(/[,\n]/);
+		if(numbers.includes("//")){ // if the string includes a optional new delimeter
+
+			var newDelimeter = numbers.match(/\/\/(.*)(?=\n)/)[1]; // get the new delimeter
+
+			var tempArray = []; // initialize temporary array to use
+			for (var i = 1; i < numberArr.length; i++) { 		 // split elements in the array on the
+				tempArray[i] = numberArr[i].split(newDelimeter); // new delimeter and store in an array of arrays
+			}				
+
+			var numberArr = []; // empty numberArr to fill with the numbers
+			for(var i = 1; i < tempArray.length; i++){
+				numberArr = numberArr.concat(tempArray[i]); // concatinate the individual numbers into numberArr
+			}
+		}
+
 		return sum(numberArr);
 	}
 
@@ -33,7 +42,7 @@ function sum(arr){ // takes in an array of numbers and returns the sum
 			total += parseInt(arr[i]);
 		}
 	}
-	return total;	
+	return total;
 }
 
 function errorMessage(arr, length){ // takes in array of negative numbers, length
